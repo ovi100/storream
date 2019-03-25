@@ -1,0 +1,358 @@
+
+// Custom Fonts
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+$theme-font:'Poppins', sans-serif;
+$theme-color:#8d59d7;
+$bcolor:#000;
+$wcolor:#fff;
+$gcolor:#808080;
+$grcolor:#41a30d;
+
+// Start Sass Mixins
+
+@mixin animation($avalue) {
+  -webkit-animation: #{$avalue};
+  -moz-animation: #{$avalue};
+  -o-animation: #{$avalue};
+  animation: #{$avalue};
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius; 
+}
+
+@mixin border-radius-s($tl, $tr, $br, $bl) {
+	border-top-left-radius: $tl;
+	border-top-right-radius: $tr;
+	border-bottom-right-radius: $br;
+	border-bottom-left-radius: $bl;
+	-webkit-border-top-left-radius: $tl;
+	-webkit-border-top-right-radius: $tr;
+	-webkit-border-bottom-right-radius: $br;
+	-webkit-border-bottom-left-radius: $bl;
+	-moz-border-radius-topleft: $tl;
+	-moz-border-radius-topright: $tr;
+	-moz-border-radius-bottomright: $br;
+	-moz-border-radius-bottomleft: $bl;
+  -ms-border-radius-topleft: $tl;
+  -ms-border-radius-topright: $tr;
+  -ms-border-radius-bottomright: $br;
+  -ms-border-radius-bottomleft: $bl;
+}
+
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+@mixin keyframes($aname) {
+  @-webkit-keyframes #{$aname} {
+    @content;
+  }
+  @-o-keyframes #{$aname} {
+    @content;
+  }
+  @-moz-keyframes #{$aname} {
+    @content;
+  }
+  @keyframes #{$aname} {
+    @content;
+  }
+}
+
+@mixin linear-gradient($sc,$sp,$ec,$ep:null) {
+  /* fallback/image non-cover color */
+  background: $sc;
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, $sc $sp, $ec $ep);
+
+  /* Safari 4+, Chrome 1+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop($sp, $sc), color-stop($ep, $ec));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-linear-gradient(left, $sc $sp, $ec $ep);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, $sc $sp, $ec $ep);
+
+  /* IE10+ */
+  background: -ms-linear-gradient(left, $sc $sp, $ec $ep);
+
+  /* Standard */
+  background: linear-gradient(to right, $sc $sp, $ec $ep);
+
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$sc', endColorstr='$ec',GradientType=1 );
+}
+
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
+@mixin placeholder {
+  &.placeholder { @content }
+  &:-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+}
+
+@mixin scale ($svalue) {
+	@include transform(scale($svalue));
+}
+
+@mixin rotate ($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+@mixin transition($property,$time,$effect){
+	-webkit-transition: $property $time $effect;
+	-moz-transition: $property $time $effect;
+  	-ms-transition: $property $time $effect;
+	-o-transition: $property $time $effect;
+  	transition: $property $time $effect;
+}
+
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin translate ($x,$y) {
+	@include transform(translate($x,$y));
+}
+
+// *********************************************
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+html {overflow-x: hidden;}
+
+body {
+	background: #fff;
+  color: #333;
+  font-family:$theme-font;
+}
+
+ul li {list-style: none;}
+
+.dropdown:hover>.dropdown-menu{
+	display:block;
+}
+
+a{
+	color:$bcolor;
+
+	&:hover, &:visited, &:focus {
+    background-color: transparent;
+  	text-decoration: none;
+		outline: 0;
+	}
+}
+
+.zoomIn:hover{
+	@include scale(1.2);
+	@include transition(all,0.8s,ease);
+}
+
+.tbtn{
+  font-size: 13px;
+  padding: 5px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.btn-fill{
+	background: $theme-color;
+  border: 1px solid $theme-color;
+  @include border-radius(2px);
+  color: $wcolor;
+  @include opacity(1);
+  @include transition(all,0.5s,ease);
+
+  &:hover{
+    background: $theme-color;
+    border: 1px solid $theme-color;
+    color: $wcolor;
+  	@include opacity(0.8);
+  }
+}
+
+.btn-outline{
+	background: transparent;
+  border: 1px solid #b5b5b5;
+  color: #757575;
+  @include transition(all,0.4s,ease-in);
+
+  &:hover{
+  	background: #757575;
+  	border: 1px solid #b5b5b5;
+  	color: $wcolor !important;
+  }
+}
+
+.tcolor{color:$theme-color !important;}
+
+
+.br-0{border-right: 0;}
+.bl-0{border-left: 0;}
+
+
+// CSS For Header Section
+
+.vision-header{
+  .vision-top-link{
+    height: 25px;
+    background: #eaeaea;
+    line-height: 25px;
+    text-align: right;
+
+    ul{
+      li{
+        display: inline-block;
+        a{
+          font-size: 13px;
+          padding: 0 20px;
+          text-transform: uppercase;
+
+          &:hover{
+            color: $theme-color;
+            text-decoration: underline;
+            @include transition(all,0.4s,ease);
+          }
+        }
+      }
+    }
+  }
+  .vision-action-bar{
+    height: 72px;
+    background: $wcolor;
+    line-height: 50px;
+    padding: 10px 0;
+
+    .mobile-nav-icon{
+      a{
+        color: $bcolor;
+        font-size: 20px;
+      }
+    }
+
+    .vision-search-box{
+      .form-control{
+        height:45px;
+        background: #eaeaea;
+        @include box-shadow(none);
+        border: 1px solid #eaeaea;
+        @include border-radius(0);
+      }
+      button{
+        height: 45px;
+        background: $theme-color;
+        border: 1px solid $theme-color;
+        @include border-radius(0);
+        color: $wcolor;
+        margin-top: -5px;
+        padding: 6px 15px;
+      }
+    }
+
+    .vision-cart-icon{
+      text-align: center;
+
+      a{
+        color: $bcolor;
+        font-size: 30px;
+
+        .badge{
+          position: absolute;
+          top: 6px;
+          right: 20px;
+          background: $theme-color;
+          color: $wcolor;
+        }
+      }
+    }
+
+    .mbl-search-box{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      background: $wcolor;
+      display: none;
+      line-height: 20px;
+      padding: 11px 5px;
+
+      .form-control{
+        border: 0;
+        @include border-radius(0);
+        @include box-shadow(none);
+      }
+      button{
+        background: $wcolor;
+        border: 0;
+        @include box-shadow(none);
+        @include border-radius(0);
+        outline: 0;
+      }
+    }
+  }
+}
+
+.fixed-nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  @include box-shadow(0 3px 2px #ddd);
+}
+
+
+
+// ************************************
+
+/* CSS For Home Slider Section */
+
+// ************************************
+
+
+// CSS For Feature Product Section
+
+
+// ************************************
+
+// CSS For Footer Section
+
+
+
+// ************************************
+
+// CSS For Catalog Page
+
+
+// ************************************
+
+
+
+// CSS For Tags Page
+
+
+// ************************************
+
