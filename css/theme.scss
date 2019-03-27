@@ -212,106 +212,30 @@ a{
 .br-0{border-right: 0;}
 .bl-0{border-left: 0;}
 
+.sp{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.custom-content{
+  width: 92%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.width80{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 
 // CSS For Header Section
 
-.vision-header{
-  .vision-top-link{
-    height: 25px;
-    background: #eaeaea;
-    line-height: 25px;
-    text-align: right;
-
-    ul{
-      li{
-        display: inline-block;
-        a{
-          font-size: 13px;
-          padding: 0 20px;
-          text-transform: uppercase;
-
-          &:hover{
-            color: $theme-color;
-            text-decoration: underline;
-            @include transition(all,0.4s,ease);
-          }
-        }
-      }
-    }
-  }
-  .vision-action-bar{
-    height: 72px;
+.header{
+  nav{
     background: $wcolor;
-    line-height: 50px;
-    padding: 10px 0;
-
-    .mobile-nav-icon{
-      a{
-        color: $bcolor;
-        font-size: 20px;
-      }
-    }
-
-    .vision-search-box{
-      .form-control{
-        height:45px;
-        background: #eaeaea;
-        @include box-shadow(none);
-        border: 1px solid #eaeaea;
-        @include border-radius(0);
-      }
-      button{
-        height: 45px;
-        background: $theme-color;
-        border: 1px solid $theme-color;
-        @include border-radius(0);
-        color: $wcolor;
-        margin-top: -5px;
-        padding: 6px 15px;
-      }
-    }
-
-    .vision-cart-icon{
-      text-align: center;
-
-      a{
-        color: $bcolor;
-        font-size: 30px;
-
-        .badge{
-          position: absolute;
-          top: 6px;
-          right: 20px;
-          background: $theme-color;
-          color: $wcolor;
-        }
-      }
-    }
-
-    .mbl-search-box{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 55px;
-      background: $wcolor;
-      display: none;
-      line-height: 20px;
-      padding: 11px 5px;
-
-      .form-control{
-        border: 0;
-        @include border-radius(0);
-        @include box-shadow(none);
-      }
-      button{
-        background: $wcolor;
-        border: 0;
-        @include box-shadow(none);
-        @include border-radius(0);
-        outline: 0;
-      }
-    }
+    border: 0;
   }
 }
 
@@ -328,7 +252,73 @@ a{
 
 // ************************************
 
-/* CSS For Home Slider Section */
+/* CSS For Section 1 */
+
+.store-create{
+  @include linear-gradient(#82a1f8,10%,#c19af5);
+  .store-create-image{
+    .sc-img-1{
+      position: relative;
+      left: 125px;
+    }
+    .sc-img-2{
+      position: absolute;
+      top: 178px;
+      left: 150px;
+      max-height: 445px;
+    }
+  }
+  .store-create-form{
+    width: 60%;
+    color: $wcolor;
+    margin-right: auto;
+    margin-left: auto;
+    float: right;
+
+    .sc-title{
+      display: block;
+      font-size:44px;
+    }
+
+    p{
+      font-size:13px;
+      line-height: 25px;
+      margin: 20px 0;
+    }
+
+    .input-group{
+      .form-control{
+        width: 75%;
+        background: transparent;
+        @include box-shadow(none);
+        border: 1px solid $wcolor;
+        @include border-radius(20px);
+        color: $wcolor;
+        
+        @include placeholder{
+          color: $wcolor;
+          font-size: 12px;
+          text-transform: capitalize;
+        }
+      }
+      .input-group-btn{
+        left: -85px;
+
+        button{
+          @include box-shadow(none);
+          border: 1px solid $wcolor;
+          @include border-radius(20px);
+          text-transform: capitalize;
+
+          &:focus,&:hover{
+            background: $wcolor;
+            outline: 0;
+          }
+        }
+      }
+    }
+  }
+}
 
 // ************************************
 
