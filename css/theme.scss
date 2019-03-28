@@ -1,6 +1,6 @@
 
 // Custom Fonts
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
 $theme-font:'Poppins', sans-serif;
 $theme-color:#8d59d7;
@@ -9,23 +9,36 @@ $wcolor:#fff;
 $gcolor:#808080;
 $grcolor:#41a30d;
 
+// SASS Color Function
+
+$darken-color:     darken($theme-color, 20%);
+$lighten-color:    lighten($theme-color, 20%);
+$saturate-color:   saturate($theme-color, 50%);
+$desaturate-color: desaturate($theme-color, 20%);
+$hue-color:        adjust-hue($theme-color, 50%);
+$opacity-color:    rgba($theme-color, .5);
+$tint-color:       tint($theme-color, 50%);
+$shade-color:      shade($theme-color, 50%);
+
+// **************************************************
+
 // Start Sass Mixins
 
-@mixin animation($avalue) {
+@mixin animation($avalue){
   -webkit-animation: #{$avalue};
   -moz-animation: #{$avalue};
   -o-animation: #{$avalue};
   animation: #{$avalue};
 }
 
-@mixin border-radius($radius) {
+@mixin border-radius($radius){
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
 	-ms-border-radius: $radius;
 	border-radius: $radius; 
 }
 
-@mixin border-radius-s($tl, $tr, $br, $bl) {
+@mixin border-radius-s($tl, $tr, $br, $bl){
 	border-top-left-radius: $tl;
 	border-top-right-radius: $tr;
 	border-bottom-right-radius: $br;
@@ -44,13 +57,13 @@ $grcolor:#41a30d;
   -ms-border-radius-bottomleft: $bl;
 }
 
-@mixin box-shadow($shadows...) {
+@mixin box-shadow($shadows...){
   -moz-box-shadow: $shadows;
   -webkit-box-shadow: $shadows;
   box-shadow: $shadows;
 }
 
-@mixin keyframes($aname) {
+@mixin keyframes($aname){
   @-webkit-keyframes #{$aname} {
     @content;
   }
@@ -104,11 +117,11 @@ $grcolor:#41a30d;
   &::-webkit-input-placeholder { @content }
 }
 
-@mixin scale ($svalue) {
+@mixin scale ($svalue){
 	@include transform(scale($svalue));
 }
 
-@mixin rotate ($deg) {
+@mixin rotate ($deg){
 	@include transform(rotate(#{$deg}deg));
 }
 
@@ -120,7 +133,7 @@ $grcolor:#41a30d;
   	transition: $property $time $effect;
 }
 
-@mixin transform($transforms) {
+@mixin transform($transforms){
 	-webkit-transform: $transforms;
   -moz-transform: $transforms;
   -o-transform: $transforms;
@@ -128,7 +141,7 @@ $grcolor:#41a30d;
   transform: $transforms;
 }
 
-@mixin translate ($x,$y) {
+@mixin translate($x,$y){
 	@include transform(translate($x,$y));
 }
 
@@ -169,40 +182,21 @@ a{
 	@include transition(all,0.8s,ease);
 }
 
-.tbtn{
+.tbtn {
+  @include linear-gradient(#c499f5,0%,#959ff8);
+  border: 0;
+  @include border-radius(20px);
+  color: #fff !important;
   font-size: 13px;
-  padding: 5px 20px;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
-.btn-fill{
-	background: $theme-color;
-  border: 1px solid $theme-color;
-  @include border-radius(2px);
-  color: $wcolor;
+  font-weight: 700;
+  letter-spacing: 1px;
   @include opacity(1);
-  @include transition(all,0.5s,ease);
+  padding: 10px 25px;
+  text-transform: capitalize;
 
   &:hover{
-    background: $theme-color;
-    border: 1px solid $theme-color;
-    color: $wcolor;
-  	@include opacity(0.8);
-  }
-}
-
-.btn-outline{
-	background: transparent;
-  border: 1px solid #b5b5b5;
-  color: #757575;
-  @include transition(all,0.4s,ease-in);
-
-  &:hover{
-  	background: #757575;
-  	border: 1px solid #b5b5b5;
-  	color: $wcolor !important;
+    @include opacity(0.8);
+    @include transition(opacity ,0.4s, ease);
   }
 }
 
@@ -213,8 +207,8 @@ a{
 .bl-0{border-left: 0;}
 
 .sp{
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 55px;
+  padding-bottom: 55px;
 }
 
 .custom-content{
@@ -224,10 +218,53 @@ a{
 }
 
 .width80{
-  width: 80%;
+  width: 75%;
   margin-right: auto;
   margin-left: auto;
 }
+
+.section-header{
+  max-width: 35%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+
+  p{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.sectin-content{margin-top: 40px;}
+
+.has-list-style{
+  font-size: 15px;
+  &:before{
+    content: '';
+    height: 16px;
+    width: 16px;
+    background: #8d59d7;
+    border: 5px solid #c5abeb;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    top: 19px;
+    left: -25px;
+  }
+}
+
+.middel-align{
+  @include translate(0,50%);
+}
+
+.theme-btn {
+  padding: 30px 0;
+  margin-left: -25px;
+}
+
+.ml-0{margin-left: 0;}
 
 
 // CSS For Header Section
@@ -252,10 +289,13 @@ a{
 
 // ************************************
 
-/* CSS For Section 1 */
+// CSS For Store Create Section
 
 .store-create{
-  @include linear-gradient(#82a1f8,10%,#c19af5);
+  @include linear-gradient(#959ff8,30%,#c499f5);
+  overflow-x: hidden;
+  padding-top: 100px;
+  padding-bottom: 100px;
   .store-create-image{
     .sc-img-1{
       position: relative;
@@ -323,12 +363,77 @@ a{
 // ************************************
 
 
-// CSS For Feature Product Section
+// CSS For Clients Section 
 
+.clients{
+  background: #f3f6fe;
+  padding: 35px 0;
+
+  .clients-slider-title {
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .clients-slider{
+    .owl-nav{
+      .owl-prev{display: none;}
+      .owl-next{
+        position: absolute;
+        top: -3px;
+        right: -35px;
+        background: transparent;
+        color: $theme-color;
+        font-size: 30px;
+        outline: 0;
+      }
+    }
+  }
+}
 
 // ************************************
 
-// CSS For Footer Section
+// CSS For BM Tool Section
+
+.bm-tools{
+  background: #f5f5f5;
+  .bm-tool-text{margin-left: 50px;}
+}
+
+// ************************************
+
+// CSS For Features Section
+
+.features{
+  .feature-box{
+    width: 270px;
+    height: 290px;
+    background: #e2f7fe;
+    @include border-radius(5px);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 25px 30px;
+    text-align: center;
+
+    .ft-image{
+      img{margin: auto;}
+    }
+
+    .ft-text {
+      height: 55px;
+      font-size: 20px;
+      margin-top: 15px;
+      text-transform: uppercase;
+
+      a{color: $bcolor;}
+    }
+
+    &:hover{
+      @include box-shadow(0px 0px 10px 3px #ddd);
+    }
+  }  
+}
 
 
 

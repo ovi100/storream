@@ -49,6 +49,28 @@ $(document).ready(function(){
 	  	$(".mbl-search-box").fadeOut("fast");
 	});
 
+	$('.clients-slider').owlCarousel({
+		autoWidth: true,
+		dots: false,
+		items: 6,
+		loop: true,
+	    margin:70,
+	    nav: true,
+	    navText: [ ,'<i class="fas fa-angle-right"></i>'],
+	    responsiveClass:true,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        600:{
+	            items:3
+	        },
+	        1000:{
+	            items:5
+	        }
+	    }
+	})
+
 
 
 });
