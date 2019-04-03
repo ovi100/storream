@@ -71,7 +71,69 @@ $(document).ready(function(){
 	    }
 	})
 
+	$('.testimonial-slider').owlCarousel({
+		center:true,
+		dots: false,
+		items: 3,
+		loop: true,
+	    margin:0,
+	    nav: true,
+	    navText: [ ,'<i class="fas fa-angle-right"></i>'],
+	    responsiveClass:true,
+	    responsive:{
+	        0:{
+	            items:3
+	        },
+	        600:{
+	            items:3
+	        },
+	        1000:{
+	            items:3
+	        }
+	    }
+	})
 
+	$('.stories-slider').owlCarousel({
+		dots: true,
+		items: 3,
+		loop: true,
+	    margin:20,
+	    nav: false,
+	    video:true,
+	    responsiveClass:true,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        768:{
+	            items:2
+	        },
+	        1000:{
+	            items:3
+	        }
+	    }
+	})
+
+	$('.themes-slider').owlCarousel({
+		dots: false,
+		items: 3,
+		loop: true,
+	    margin:15,
+	    nav: true,
+	    navText: [ ,'<i class="fas fa-angle-right"></i>'],
+	    responsiveClass:true,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        768:{
+	            items:2
+	        },
+	        1000:{
+	            items:3
+	        }
+	    }
+	})
 
 });
 
